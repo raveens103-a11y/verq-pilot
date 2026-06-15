@@ -15,7 +15,7 @@
 .toggle-wrap { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 48px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 4px; width: fit-content; margin-left: auto; margin-right: auto; animation: fadeUp 0.5s 0.2s ease both; }
 .toggle-btn { padding: 10px 28px; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; }
 .toggle-btn.active { background: var(--accent); color: var(--space); }
-.toggle-btn.inactive { background: transparent; color: var(--muted); }
+.toggle-btn.inactive { background: transparent; color: rgba(240,240,240,0.7); border: 1px solid rgba(255,255,255,0.12); }
 
 /* FLAT FEE */
 .flat-section { padding: 0 5% 80px; position: relative; z-index: 1; }
@@ -100,6 +100,85 @@
 .price-wm { position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0; }
 .pf-card > *:not(.price-wm), .ret-card > *:not(.price-wm) { position:relative;z-index:1; }
 
+/* COLOUR VARIATIONS PER TIER */
+.pf-card.pc-junior { background: linear-gradient(155deg, rgba(99,102,241,0.07) 0%, var(--surface) 55%); }
+.pf-card.pc-mid    { background: linear-gradient(155deg, rgba(20,184,166,0.07) 0%, var(--surface) 55%); }
+.pf-card.pc-senior { background: linear-gradient(155deg, rgba(190,255,0,0.07) 0%, var(--surface) 55%); }
+.pf-card.pc-lead   { background: linear-gradient(155deg, rgba(249,115,22,0.07) 0%, var(--surface) 55%); }
+.pf-card.pc-junior::before { background: linear-gradient(90deg,#6366F1,#818CF8) !important; transform:scaleX(1) !important; }
+.pf-card.pc-mid::before    { background: linear-gradient(90deg,#14B8A6,#06B6D4) !important; transform:scaleX(1) !important; }
+.pf-card.pc-senior::before { background: linear-gradient(90deg,var(--accent),var(--cyan)) !important; transform:scaleX(1) !important; }
+.pf-card.pc-lead::before   { background: linear-gradient(90deg,#F97316,#EF4444) !important; transform:scaleX(1) !important; }
+.pf-card.pc-junior .pf-amount { color:#818CF8 !important; text-shadow:0 0 20px rgba(99,102,241,0.4) !important; }
+.pf-card.pc-mid    .pf-amount { color:#2DD4BF !important; text-shadow:0 0 20px rgba(20,184,166,0.4) !important; }
+.pf-card.pc-senior .pf-amount { color:var(--accent) !important; text-shadow:0 0 24px rgba(190,255,0,0.45) !important; }
+.pf-card.pc-lead   .pf-amount { color:#FB923C !important; text-shadow:0 0 20px rgba(249,115,22,0.4) !important; }
+.pf-card.pc-junior .pf-band { color:#818CF8; }
+.pf-card.pc-mid    .pf-band { color:#2DD4BF; }
+.pf-card.pc-lead   .pf-band { color:#FB923C; }
+.pf-card.pc-junior .pf-save { color:#818CF8; background:rgba(99,102,241,0.08); border-color:rgba(99,102,241,0.2); }
+.pf-card.pc-mid    .pf-save { color:#2DD4BF; background:rgba(20,184,166,0.08); border-color:rgba(20,184,166,0.2); }
+.pf-card.pc-senior .pf-save { color:var(--accent); background:rgba(190,255,0,0.08); border-color:rgba(190,255,0,0.22); }
+.pf-card.pc-lead   .pf-save { color:#FB923C; background:rgba(249,115,22,0.08); border-color:rgba(249,115,22,0.2); }
+.pf-card.pc-junior .pf-includes li::before { color:#818CF8; }
+.pf-card.pc-mid    .pf-includes li::before { color:#2DD4BF; }
+.pf-card.pc-senior .pf-includes li::before { color:var(--accent); }
+.pf-card.pc-lead   .pf-includes li::before { color:#FB923C; }
+/* Neon icon box */
+.pf-neon-icon { width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px; }
+.pc-junior .pf-neon-icon { background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.22); }
+.pc-mid    .pf-neon-icon { background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.22); }
+.pc-senior .pf-neon-icon { background:rgba(190,255,0,0.1);border:1px solid rgba(190,255,0,0.22); }
+.pc-lead   .pf-neon-icon { background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.22); }
+/* Term cards hover */
+.term-card { transition:all 0.25s;cursor:default; }
+.term-card:hover { border-color:rgba(190,255,0,0.2);transform:translateY(-2px); }
+.term-card .term-num { color:rgba(190,255,0,0.1); }
+/* Retainer strip always visible */
+.ret-card::before { transform:scaleX(1) !important; }
+
+
+/* RETAINER CARD COLOUR VARIATIONS */
+.ret-card { position:relative; overflow:hidden; transition:all 0.28s; }
+.ret-card > *:not(.ret-wm) { position:relative; z-index:1; }
+.ret-wm { position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0; }
+
+/* Essentials — Indigo */
+.ret-card.re { background:linear-gradient(155deg,rgba(99,102,241,0.07) 0%,var(--surface) 55%); border-color:rgba(99,102,241,0.2); }
+.ret-card.re::before { background:linear-gradient(90deg,#6366F1,#818CF8) !important; transform:scaleX(1) !important; }
+.ret-card.re:hover { border-color:rgba(99,102,241,0.4) !important; box-shadow:0 0 28px rgba(99,102,241,0.14),0 12px 32px rgba(0,0,0,0.4); transform:translateY(-4px); }
+.ret-card.re .ret-popular { color:#818CF8 !important; }
+.ret-card.re .ret-price { color:#818CF8; text-shadow:0 0 18px rgba(99,102,241,0.4); }
+.ret-card.re .ret-list li::before { color:#818CF8; }
+
+/* Scale — Lime (featured) */
+.ret-card.rs { background:linear-gradient(155deg,rgba(190,255,0,0.07) 0%,var(--surface) 55%); border-color:rgba(190,255,0,0.28); }
+.ret-card.rs::before { background:linear-gradient(90deg,var(--accent),var(--cyan)) !important; transform:scaleX(1) !important; }
+.ret-card.rs:hover { border-color:rgba(190,255,0,0.45) !important; box-shadow:0 0 36px rgba(190,255,0,0.18),0 12px 32px rgba(0,0,0,0.4); transform:translateY(-4px); }
+.ret-card.rs .ret-popular { color:var(--accent) !important; }
+.ret-card.rs .ret-price { color:var(--accent); text-shadow:0 0 24px rgba(190,255,0,0.45); }
+.ret-card.rs .ret-list li::before { color:var(--accent); }
+
+/* Studio — Orange */
+.ret-card.rstudio { background:linear-gradient(155deg,rgba(249,115,22,0.07) 0%,var(--surface) 55%); border-color:rgba(249,115,22,0.18); }
+.ret-card.rstudio::before { background:linear-gradient(90deg,#F97316,#FB923C) !important; transform:scaleX(1) !important; }
+.ret-card.rstudio:hover { border-color:rgba(249,115,22,0.4) !important; box-shadow:0 0 28px rgba(249,115,22,0.14),0 12px 32px rgba(0,0,0,0.4); transform:translateY(-4px); }
+.ret-card.rstudio .ret-popular { color:#FB923C !important; }
+.ret-card.rstudio .ret-price { color:#FB923C; text-shadow:0 0 18px rgba(249,115,22,0.4); }
+.ret-card.rstudio .ret-list li::before { color:#FB923C; }
+
+/* Neon icon boxes */
+.ret-icon { width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px; }
+.re .ret-icon { background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.22); }
+.rs .ret-icon { background:rgba(190,255,0,0.1);border:1px solid rgba(190,255,0,0.22); }
+.rstudio .ret-icon { background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.22); }
+
+/* Terms card hover */
+.term-card { transition:all 0.25s; }
+.term-card:hover { border-color:rgba(190,255,0,0.2) !important; transform:translateY(-2px); }
+.term-card .term-num { color:rgba(190,255,0,0.1); }
+.term-card:hover .term-num { color:rgba(190,255,0,0.16); }
+
 </style>
 </head>
 <body>
@@ -124,9 +203,29 @@
 <div class="page-hero">
   <span class="eyebrow" style="animation:fadeUp 0.5s ease both;">Transparent Pricing</span>
   <h1 class="section-title" style="font-size:clamp(40px,5.5vw,68px);letter-spacing:-2.5px;line-height:1.0;margin-bottom:16px;animation:fadeUp 0.5s 0.1s ease both;">
-    Flat fee. No % of CTC.<br/><span style="color:var(--accent);">No surprises. Ever.</span>
+    <span style="color:#BEFF00;-webkit-text-fill-color:#BEFF00;text-shadow:0 0 30px rgba(190,255,0,0.5);">No % of CTC.</span><br/><span style="color:var(--white);">Pay only when they join.</span>
   </h1>
   <p class="section-sub" style="max-width:480px;margin:0 auto 32px;font-size:17px;animation:fadeUp 0.5s 0.2s ease both;">Pay only when the candidate joins. Not on shortlist. Not on offer acceptance. On joining.</p>
+  <!-- SAVINGS STATS BAR -->
+  <div style="display:flex;justify-content:center;gap:36px;margin-bottom:32px;flex-wrap:wrap;animation:fadeUp 0.5s 0.3s ease both;">
+    <div style="text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--accent);line-height:1;letter-spacing:1px;" id="stat-save">₹0</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px;letter-spacing:1.5px;text-transform:uppercase;">Avg saved vs agency</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--cyan);line-height:1;letter-spacing:1px;">0%</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px;letter-spacing:1.5px;text-transform:uppercase;">CTC Commission</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#818CF8;line-height:1;letter-spacing:1px;">0</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px;letter-spacing:1.5px;text-transform:uppercase;">Mandate Days</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#2DD4BF;line-height:1;letter-spacing:1px;">60D</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:3px;letter-spacing:1.5px;text-transform:uppercase;">Replacement Guarantee</div>
+    </div>
+  </div>
+
   <div class="toggle-wrap">
     <button class="toggle-btn active" onclick="showSection('flat', this)">Per Hire — Flat Fee</button>
     <button class="toggle-btn inactive" onclick="showSection('retainer', this)">Monthly Retainer</button>
@@ -138,7 +237,8 @@
   <span class="eyebrow">Flat Fee Per Hire</span>
   <h2 class="section-title">One role. One fixed price.<br/>No hidden anything.</h2>
   <div class="pricing-full-grid">
-    <div class="pf-card reveal">
+    <div class="pf-card pc-junior reveal">
+      <div class="pf-neon-icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(99,102,241,0.7)" stroke-width="1.4"/><circle cx="12" cy="12" r="5" fill="none" stroke="rgba(99,102,241,0.5)" stroke-width="1.2"/><circle cx="12" cy="12" r="2" fill="rgba(99,102,241,0.9)"/><line x1="12" y1="3" x2="12" y2="6.5" stroke="rgba(99,102,241,0.5)" stroke-width="1.3" stroke-linecap="round"/><line x1="17.5" y1="12" x2="21" y2="12" stroke="rgba(99,102,241,0.5)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
       <div class="pf-band">Entry Level</div>
       <div class="pf-role">Up to ₹5 LPA</div>
       <div class="pf-ctc">Annual CTC up to ₹5 LPA</div>
@@ -153,7 +253,8 @@
         <li>30-day replacement</li>
       </ul>
     </div>
-    <div class="pf-card reveal">
+    <div class="pf-card pc-mid reveal">
+      <div class="pf-neon-icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(20,184,166,0.7)" stroke-width="1.4"/><text x="7" y="16.5" font-size="11" fill="rgba(20,184,166,0.9)" font-family="serif" font-weight="bold">₹</text></svg></div>
       <div class="pf-band">Mid Level</div>
       <div class="pf-role">₹5L – ₹12 LPA</div>
       <div class="pf-ctc">Annual CTC ₹5L–₹12 LPA</div>
@@ -168,7 +269,8 @@
         <li>60-day replacement</li>
       </ul>
     </div>
-    <div class="pf-card featured reveal">
+    <div class="pf-card pc-senior featured reveal">
+      <div class="pf-neon-icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2L14.2 8.8H21.5L15.7 12.9L17.9 19.8L12 15.6L6.1 19.8L8.3 12.9L2.5 8.8H9.8Z" fill="rgba(190,255,0,0.15)" stroke="rgba(190,255,0,0.8)" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
       <div class="pf-band hot">Most Popular</div>
       <div class="pf-role">₹12L – ₹25 LPA</div>
       <div class="pf-ctc">Annual CTC ₹12L–₹25 LPA</div>
@@ -184,7 +286,8 @@
         <li>Offer negotiation support</li>
       </ul>
     </div>
-    <div class="pf-card reveal">
+    <div class="pf-card pc-lead reveal">
+      <div class="pf-neon-icon"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 3L14 9L21 9L15.5 13L17.5 19L12 15L6.5 19L8.5 13L3 9L10 9Z" fill="rgba(249,115,22,0.18)" stroke="rgba(249,115,22,0.8)" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
       <div class="pf-band">Leadership</div>
       <div class="pf-role">₹25L+ LPA</div>
       <div class="pf-ctc">Annual CTC ₹25L+ LPA</div>
@@ -209,8 +312,22 @@
   <span class="eyebrow">Monthly Retainer</span>
   <h2 class="section-title">For ongoing hiring.<br/>Predictable cost. Unlimited hires.</h2>
   <div class="retainer-grid">
-    <div class="ret-card reveal">
-      <span class="ret-popular" style="color:var(--muted);">Starter</span>
+
+    <!-- ESSENTIALS — Indigo -->
+    <div class="ret-card re reveal">
+      <svg class="ret-wm" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <circle cx="220" cy="85" r="52" fill="none" stroke="rgba(99,102,241,0.07)" stroke-width="1.5"/>
+        <circle cx="220" cy="85" r="33" fill="none" stroke="rgba(99,102,241,0.09)" stroke-width="1.5"/>
+        <circle cx="220" cy="85" r="14" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+        <circle cx="220" cy="33" r="4" fill="rgba(99,102,241,0.35)"/>
+        <rect x="10" y="280" width="10" height="110" rx="2" fill="rgba(99,102,241,0.05)"/>
+        <rect x="24" y="255" width="10" height="135" rx="2" fill="rgba(99,102,241,0.06)"/>
+        <rect x="38" y="222" width="10" height="168" rx="2" fill="rgba(99,102,241,0.07)"/>
+        <polyline points="15,280 29,255 43,222" fill="none" stroke="rgba(99,102,241,0.12)" stroke-width="1" stroke-linecap="round"/>
+        <circle cx="43" cy="222" r="2.5" fill="rgba(99,102,241,0.28)"/>
+      </svg>
+      <span class="ret-popular">Starter</span>
+      <div class="ret-icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(99,102,241,0.7)" stroke-width="1.4"/><circle cx="12" cy="12" r="5" fill="none" stroke="rgba(99,102,241,0.45)" stroke-width="1.2"/><circle cx="12" cy="12" r="2" fill="rgba(99,102,241,0.8)"/></svg></div>
       <div class="ret-name">Essentials</div>
       <div class="ret-tagline">For startups hiring 1 role at a time over 2–3 months.</div>
       <div class="ret-price">₹25,000</div>
@@ -224,8 +341,26 @@
       </ul>
       <a href="/post-requirement.html" class="btn-outline" style="width:100%;justify-content:center;">Get Started →</a>
     </div>
-    <div class="ret-card featured reveal">
+
+    <!-- SCALE — Lime (featured) -->
+    <div class="ret-card rs featured reveal">
+      <svg class="ret-wm" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <circle cx="215" cy="82" r="56" fill="rgba(190,255,0,0.03)" stroke="rgba(190,255,0,0.09)" stroke-width="1.5"/>
+        <circle cx="215" cy="82" r="36" fill="rgba(190,255,0,0.04)" stroke="rgba(190,255,0,0.12)" stroke-width="1.5"/>
+        <circle cx="215" cy="82" r="17" fill="rgba(190,255,0,0.07)" stroke="rgba(190,255,0,0.2)" stroke-width="1.5"/>
+        <circle cx="215" cy="26" r="4.5" fill="rgba(190,255,0,0.4)"/>
+        <circle cx="263" cy="109" r="3.5" fill="rgba(190,255,0,0.3)"/>
+        <circle cx="167" cy="109" r="3.5" fill="rgba(190,255,0,0.3)"/>
+        <circle cx="215" cy="82" r="5" fill="rgba(190,255,0,0.55)"/>
+        <rect x="8" y="270" width="10" height="122" rx="2" fill="rgba(190,255,0,0.07)"/>
+        <rect x="22" y="242" width="10" height="150" rx="2" fill="rgba(190,255,0,0.09)"/>
+        <rect x="36" y="208" width="10" height="184" rx="2" fill="rgba(190,255,0,0.11)"/>
+        <rect x="50" y="226" width="10" height="166" rx="2" fill="rgba(190,255,0,0.08)"/>
+        <polyline points="13,270 27,242 41,208 55,226" fill="none" stroke="rgba(190,255,0,0.2)" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="41" cy="208" r="3" fill="rgba(190,255,0,0.4)"/>
+      </svg>
       <span class="ret-popular">Most Popular</span>
+      <div class="ret-icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="rgba(190,255,0,0.1)" stroke="rgba(190,255,0,0.7)" stroke-width="1.4"/><circle cx="12" cy="12" r="5" fill="rgba(190,255,0,0.15)" stroke="rgba(190,255,0,0.5)" stroke-width="1.2"/><circle cx="12" cy="12" r="2.5" fill="rgba(190,255,0,0.8)"/></svg></div>
       <div class="ret-name">Scale</div>
       <div class="ret-tagline">For post-seed or Series A startups building teams across multiple functions.</div>
       <div class="ret-price">₹45,000</div>
@@ -240,8 +375,36 @@
       </ul>
       <a href="/post-requirement.html" class="btn-primary" style="width:100%;justify-content:center;">Get Started →</a>
     </div>
-    <div class="ret-card reveal">
-      <span class="ret-popular" style="color:var(--muted);">High Volume</span>
+
+    <!-- STUDIO — Orange -->
+    <div class="ret-card rstudio reveal">
+      <svg class="ret-wm" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <circle cx="200" cy="45" r="7" fill="none" stroke="rgba(249,115,22,0.2)" stroke-width="1"/>
+        <circle cx="252" cy="68" r="6" fill="none" stroke="rgba(249,115,22,0.18)" stroke-width="1"/>
+        <circle cx="258" cy="115" r="8" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.22)" stroke-width="1"/>
+        <circle cx="222" cy="148" r="6" fill="none" stroke="rgba(249,115,22,0.18)" stroke-width="1"/>
+        <circle cx="178" cy="128" r="7" fill="none" stroke="rgba(249,115,22,0.2)" stroke-width="1"/>
+        <circle cx="170" cy="75" r="6" fill="none" stroke="rgba(249,115,22,0.18)" stroke-width="1"/>
+        <line x1="200" y1="45" x2="252" y2="68" stroke="rgba(249,115,22,0.12)" stroke-width="0.8"/>
+        <line x1="252" y1="68" x2="258" y2="115" stroke="rgba(249,115,22,0.12)" stroke-width="0.8"/>
+        <line x1="258" y1="115" x2="222" y2="148" stroke="rgba(249,115,22,0.12)" stroke-width="0.8"/>
+        <line x1="222" y1="148" x2="178" y2="128" stroke="rgba(249,115,22,0.12)" stroke-width="0.8"/>
+        <line x1="178" y1="128" x2="170" y2="75" stroke="rgba(249,115,22,0.12)" stroke-width="0.8"/>
+        <line x1="170" y1="75" x2="200" y2="45" stroke="rgba(249,115,22,0.12)" stroke-width="0.8"/>
+        <line x1="200" y1="45" x2="258" y2="115" stroke="rgba(249,115,22,0.07)" stroke-width="0.8"/>
+        <line x1="252" y1="68" x2="178" y2="128" stroke="rgba(249,115,22,0.07)" stroke-width="0.8"/>
+        <circle cx="258" cy="115" r="3" fill="rgba(249,115,22,0.35)"/>
+        <circle cx="200" cy="45" r="2.5" fill="rgba(249,115,22,0.28)"/>
+        <rect x="8" y="258" width="10" height="135" rx="2" fill="rgba(249,115,22,0.06)"/>
+        <rect x="22" y="228" width="10" height="165" rx="2" fill="rgba(249,115,22,0.07)"/>
+        <rect x="36" y="195" width="10" height="198" rx="2" fill="rgba(249,115,22,0.08)"/>
+        <rect x="50" y="212" width="10" height="181" rx="2" fill="rgba(249,115,22,0.06)"/>
+        <rect x="64" y="175" width="10" height="218" rx="2" fill="rgba(249,115,22,0.08)"/>
+        <polyline points="13,258 27,228 41,195 55,212 69,175" fill="none" stroke="rgba(249,115,22,0.15)" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="69" cy="175" r="3" fill="rgba(249,115,22,0.3)"/>
+      </svg>
+      <span class="ret-popular">High Volume</span>
+      <div class="ret-icon"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="8" cy="12" r="3" fill="none" stroke="rgba(249,115,22,0.6)" stroke-width="1.3"/><circle cx="16" cy="12" r="3" fill="none" stroke="rgba(249,115,22,0.6)" stroke-width="1.3"/><line x1="11" y1="12" x2="13" y2="12" stroke="rgba(249,115,22,0.6)" stroke-width="1.3"/><circle cx="12" cy="5" r="3" fill="rgba(249,115,22,0.2)" stroke="rgba(249,115,22,0.7)" stroke-width="1.3"/><line x1="9.5" y1="7.5" x2="11" y2="10" stroke="rgba(249,115,22,0.5)" stroke-width="1.2"/><line x1="14.5" y1="7.5" x2="13" y2="10" stroke="rgba(249,115,22,0.5)" stroke-width="1.2"/></svg></div>
       <div class="ret-name">Studio</div>
       <div class="ret-tagline">For startups in aggressive expansion mode needing a dedicated hiring partner.</div>
       <div class="ret-price">₹75,000</div>
@@ -257,6 +420,7 @@
       </ul>
       <a href="/post-requirement.html" class="btn-outline" style="width:100%;justify-content:center;">Get Started →</a>
     </div>
+
   </div>
 </section>
 
@@ -340,6 +504,24 @@
   function init(){nodes=[];const n=Math.min(Math.floor(W*H/14000), 55);for(let i=0;i<n;i++)nodes.push(new N());}
   function draw(){ctx.clearRect(0,0,W,H);nodes.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;p.pt+=p.ps;const pf=(Math.sin(p.pt)+1)*.5;p.a=p.ba+pf*.2;const r=p.r+pf*1.3;const col=p.cyan?'0,245,255':'190,255,0';const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,r*4);g.addColorStop(0,`rgba(${col},${p.a*.3})`);g.addColorStop(1,`rgba(${col},0)`);ctx.beginPath();ctx.arc(p.x,p.y,r*4,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fillStyle=`rgba(${col},${p.a})`;ctx.fill();});for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;const d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(190,255,0,${.1*(1-d/100)})`;ctx.lineWidth=.7;ctx.stroke();}}}requestAnimationFrame(draw);}
   resize();init();draw();window.addEventListener('resize',()=>{resize();init();});
+})();
+</script>
+
+
+<script>
+// Animate only the savings figure — 60D and 0% are intentionally static
+(function(){
+  var el = document.getElementById('stat-save');
+  if(!el) return;
+  var start = performance.now();
+  var dur = 1800;
+  function step(now){
+    var p = Math.min((now-start)/dur, 1);
+    var ease = 1 - Math.pow(1-p, 3);
+    el.textContent = '₹' + Math.floor(ease * 50000).toLocaleString('en-IN') + '+';
+    if(p < 1) requestAnimationFrame(step);
+  }
+  setTimeout(function(){ requestAnimationFrame(step); }, 500);
 })();
 </script>
 
