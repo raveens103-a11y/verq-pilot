@@ -3,62 +3,110 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Referral Submitted! | verQ</title>
+<title>Post a Requirement | verQ</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/theme.css"/>
-<style>
-.success-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 24px; position: relative; z-index: 1; }
-.success-box { text-align: center; max-width: 480px; }
-.s-icon { width: 80px; height: 80px; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-size: 36px; color: var(--accent); box-shadow: var(--glow); }
-.s-title { font-family: "Space Grotesk", sans-serif; font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 12px; letter-spacing: -1px; }
-.s-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; }
-.s-home { display: inline-block; background: var(--accent); color: #0A0A0F; padding: 14px 32px; border-radius: 8px; font-family: "Space Grotesk", sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; margin-right: 12px; box-shadow: var(--glow); }
-.s-back { display: inline-block; border: 1px solid var(--border); color: var(--white); padding: 14px 32px; border-radius: 8px; font-family: "Space Grotesk", sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; }
-</style>
 </head>
 <body>
+
+<!-- Netlify form detection (hidden) -->
+<form name="requirement" netlify netlify-honeypot="bot-field" hidden>
+  <input name="name"/><input name="designation"/><input name="company"/>
+  <input name="size"/><input name="email"/><input name="phone"/>
+  <input name="type"/><input name="timeline"/><input name="duration"/>
+  <textarea name="description"></textarea><input name="budget"/>
+</form>
+
 <nav>
   <a href="/" class="nav-logo">ver<span>Q</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/services.html">Services</a>
+    <a href="/ai-match.html" style="color:var(--accent);font-weight:600;">✦ AI Match</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/about.html">About Us</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/post-requirement.html" class="nav-cta active">Post a Requirement</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
-<div class="success-page">
-  <div class="success-box">
-    <div class="s-icon">✓</div>
-    <div class="s-title">Referral Submitted!</div>
-    <div class="s-sub">We've received your referral and will reach out to them within 24 hours. You'll be notified when it converts — and paid within 7 days.</div>
-    <a href="/" class="s-home">Back to verQ →</a>
-    <a href="/referral.html" class="s-back">Submit Another Referral</a>
+
+<div class="form-page">
+  <div class="form-card-wrap">
+    <div class="form-card">
+      <div class="form-card-header">
+        <div class="form-card-badge">For Companies</div>
+        <div class="form-card-title">Post a Requirement</div>
+        <div class="form-card-sub">Tell us what you need. We'll match you with the right HR partner within 48 hours.</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+
+      <div class="form-card-body">
+        <form id="reqForm" name="requirement" method="POST" action="/success-requirement.html" data-netlify="true">
+          <input type="hidden" name="form-name" value="requirement"/>
+          <p hidden><input name="bot-field"/></p>
+
+          <span class="eyebrow" style="margin-bottom:16px;">About Your Company</span>
+          <div class="form-grid">
+            <div class="form-field"><label class="form-label">Your Name <span class="req">*</span></label><input class="form-input" name="name" placeholder="Rohit Kumar" required/></div>
+            <div class="form-field"><label class="form-label">Designation <span class="req">*</span></label><input class="form-input" name="designation" placeholder="Founder / HR Head" required/></div>
+            <div class="form-field"><label class="form-label">Company Name <span class="req">*</span></label><input class="form-input" name="company" placeholder="SCIKIQ" required/></div>
+            <div class="form-field"><label class="form-label">Company Size</label>
+              <select class="form-select" name="size"><option value="" disabled selected>Select team size</option><option>1–10 employees</option><option>11–50 employees</option><option>51–200 employees</option><option>200+ employees</option></select>
+            </div>
+            <div class="form-field"><label class="form-label">Email <span class="req">*</span></label><input class="form-input" type="email" name="email" placeholder="rohit@company.com" required/></div>
+            <div class="form-field"><label class="form-label">Phone <span class="req">*</span></label><input class="form-input" type="tel" name="phone" placeholder="+91 98765 43210" required/></div>
+          </div>
+
+          <div class="form-divider"></div>
+          <span class="eyebrow" style="margin-bottom:16px;">Your HR Requirement</span>
+          <div class="form-grid">
+            <div class="form-field full"><label class="form-label">Type of HR Support Needed <span class="req">*</span></label>
+              <select class="form-select" name="type" required><option value="" disabled selected>Select requirement type</option><option>Recruitment — Single Role</option><option>Recruitment — Multiple Roles</option><option>Payroll Setup & Management</option><option>HR Compliance & Audit</option><option>Policy Writing & Documentation</option><option>HR Generalist Support</option><option>Other / Custom Project</option></select>
+            </div>
+            <div class="form-field"><label class="form-label">When Do You Need to Start?</label>
+              <select class="form-select" name="timeline"><option value="" disabled selected>Select timeline</option><option>Immediately (within 48 hrs)</option><option>This week</option><option>Within 2 weeks</option><option>This month</option><option>Planning ahead</option></select>
+            </div>
+            <div class="form-field"><label class="form-label">Duration of Engagement</label>
+              <select class="form-select" name="duration"><option value="" disabled selected>Select duration</option><option>One-time project</option><option>1–2 weeks</option><option>1 month</option><option>2–3 months</option><option>Ongoing / Retainer</option></select>
+            </div>
+            <div class="form-field full"><label class="form-label">Describe Your Requirement <span class="req">*</span></label><textarea class="form-textarea" name="description" placeholder="E.g. We need a recruiter to help us hire 3 engineers and 1 product manager over the next 4 weeks..." required></textarea></div>
+          </div>
+
+          <div class="form-divider"></div>
+          <span class="eyebrow" style="margin-bottom:14px;">Budget Range</span>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="budget" id="b1" value="Under ₹10K"/><label for="b1">Under ₹10K</label></div>
+            <div class="chip"><input type="radio" name="budget" id="b2" value="₹10K–₹25K"/><label for="b2">₹10K–₹25K</label></div>
+            <div class="chip"><input type="radio" name="budget" id="b3" value="₹25K–₹50K"/><label for="b3">₹25K–₹50K</label></div>
+            <div class="chip"><input type="radio" name="budget" id="b4" value="₹50K–₹1L"/><label for="b4">₹50K–₹1L</label></div>
+            <div class="chip"><input type="radio" name="budget" id="b5" value="Above ₹1L"/><label for="b5">Above ₹1L</label></div>
+            <div class="chip"><input type="radio" name="budget" id="b6" value="Not sure yet"/><label for="b6">Not sure yet</label></div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="reqBtn">Submit Requirement</button>
+          <p class="form-note">We'll reach out within 48 hours with matched HR partner profiles. No spam, ever.</p>
+        </form>
+
+        <div class="success-state" id="reqSuccess">
+          <div class="success-icon">✓</div>
+          <div class="success-title">Requirement Received!</div>
+          <div class="success-sub">Naveen from verQ will personally review your requirement and reach out within 48 hours with matched HR partner profiles.</div>
+        </div>
+      </div>
+      <div class="form-card-footer">Questions? <a href="mailto:info@verq.in">info@verq.in</a> · <a href="tel:+917703897083">+91 7703897083</a></div>
+    </div>
   </div>
 </div>
 
-
-
+<script src="js/main.js"></script>
 <script>
-function toggleMenu() {
-  const links = document.querySelector('.nav-links');
-  const burger = document.getElementById('hamburger');
-  if (!links || !burger) return;
-  const isOpen = links.classList.contains('open');
-  if (isOpen) { links.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; }
-  else { links.classList.add('open'); burger.classList.add('open'); document.body.style.overflow = 'hidden'; }
-}
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.nav-links a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      document.querySelector('.nav-links')?.classList.remove('open');
-      document.getElementById('hamburger')?.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-  document.addEventListener('click', function(e) {
-    const nav = document.querySelector('nav');
-    const links = document.querySelector('.nav-links');
-    if (nav && !nav.contains(e.target) && links?.classList.contains('open')) {
-      links.classList.remove('open');
-      document.getElementById('hamburger')?.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-});
+  initFormProgress('reqForm', 'fill');
+  // form uses native POST redirect
 </script>
+
+
+
+
 </body>
 </html>
