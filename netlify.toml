@@ -11,6 +11,16 @@
   to = "/join-hr-partner.html"
   status = 301
 
+[[redirects]]
+  from = "/services.html"
+  to = "/explore.html"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/explore.html"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
