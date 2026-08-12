@@ -18,7 +18,7 @@
 .directory-stats { display:flex; justify-content:center; gap:0; margin: 32px auto 0; max-width: 620px; position:relative; z-index:1; }
 .dstat { padding: 0 26px; text-align:center; border-right:1px solid var(--border); }
 .dstat:last-child { border-right:none; }
-.dstat-num { font-family:'Bebas Neue', sans-serif; font-size: 26px; color: var(--accent); line-height:1; }
+.dstat-num { font-family:'Bebas Neue', sans-serif; font-size: 26px; color: var(--cyan); line-height:1; }
 .dstat-label { font-size: 11px; color: var(--muted); margin-top:4px; }
 
 /* FILTER BAR */
@@ -42,7 +42,7 @@
 .pdir-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-card); }
 .profile-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s ease, box-shadow 0.25s ease; }
 .profile-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--cyan)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-.profile-card:hover { border-color: rgba(168,230,0,0.22); box-shadow: var(--glow); transform: translateY(-4px); }
+.profile-card:hover { border-color: rgba(0,221,240,0.24); box-shadow: var(--glow-cyan); transform: translateY(-4px); }
 .profile-card:hover::before { transform: scaleX(1); }
 .p-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
 .p-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; flex-shrink: 0; color: #0A0A0F; }
@@ -52,7 +52,7 @@
 .ptag { font-size: 10px; padding: 3px 9px; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); }
 .p-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); margin-top: auto; font-size: 11px; color: var(--muted); gap: 8px; }
 .p-loc { display: flex; align-items: center; gap: 4px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.p-engagement { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: rgba(168,230,0,0.1); color: var(--accent); border: 1px solid rgba(168,230,0,0.2); white-space: nowrap; }
+.p-engagement { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: rgba(0,221,240,0.1); color: var(--cyan); border: 1px solid rgba(0,221,240,0.22); white-space: nowrap; }
 
 .pdir-empty { grid-column: 1 / -1; text-align: center; padding: 64px 24px; border: 1px dashed var(--border); border-radius: 14px; }
 .pdir-empty-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -156,7 +156,7 @@
         <div class="p-role">${p.role}${p.experience ? ' · ' + p.experience : ''}</div>
         <div class="p-tags">${tags}</div>
         <div class="p-meta">
-          <div class="p-loc">📍 ${p.city}</div>
+          <div class="p-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;vertical-align:-1px;margin-right:3px"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.5 7 13 7 13s7-7.5 7-13c0-3.9-3.1-7-7-7z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.3" fill="var(--accent)"/></svg>${p.city}</div>
           <div class="p-engagement">${p.workType}</div>
         </div>
       </div>`;
