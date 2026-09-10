@@ -389,7 +389,7 @@ footer {
 </style>
 <style>
 /* HERO */
-.hero { min-height: 100vh; padding: 80px 5% 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; }
+.hero { min-height: 100vh; padding: 104px 5% 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; }
 .hero::before { content: ''; position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: min(600px, 92vw); height: 400px; background: radial-gradient(ellipse, rgba(168,230,0,0.06) 0%, transparent 70%); pointer-events: none; }
 .hero::after { content: ''; position: absolute; bottom: 10%; right: 5%; width: 400px; height: 400px; background: radial-gradient(ellipse, rgba(0,221,240,0.04) 0%, transparent 70%); pointer-events: none; }
 
@@ -476,13 +476,13 @@ footer {
 /* (cat-line removed from hero) */
 
 /* ── Searching → parsing → matching → results sequence ── */
-.status-zone { max-width: 680px; margin: 16px auto 0; min-height: 20px; position: relative; z-index: 1; }
+.status-zone { max-width: 680px; margin: 12px auto 0; min-height: 20px; position: relative; z-index: 1; }
 /* Reserves enough height for the tallest possible state (status lines +
    3 parsed fields + found line + 3 result cards) — measured directly by
    rendering the page, not guessed — so the page around it never needs to
    grow/shrink or scroll as the demo plays out. */
-.demo-stage { min-height: 390px; }
-@media (max-width: 760px) { .demo-stage { min-height: 860px; } }
+.demo-stage { min-height: 335px; }
+@media (max-width: 760px) { .demo-stage { min-height: 810px; } }
 .status-line { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'JetBrains Mono', monospace;
   font-size: 13px; color: var(--muted); opacity: 0; transition: opacity 0.3s ease; }
 .status-line.show { opacity: 1; }
@@ -491,7 +491,7 @@ footer {
 .spinner-dot:nth-child(3) { animation-delay: 0.3s; }
 @keyframes sdot { 0%,100%{opacity:.25;} 50%{opacity:1;} }
 
-.parse-grid { max-width: 520px; margin: 18px auto 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 22px; }
+.parse-grid { max-width: 760px; margin: 10px auto 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; }
 .parse-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted);
   opacity: 0; transform: translateY(4px); transition: opacity 0.3s ease, transform 0.3s ease; }
 .parse-item.show { opacity: 1; transform: translateY(0); }
@@ -500,7 +500,7 @@ footer {
 .parse-check svg { width: 8px; height: 8px; }
 .parse-item b { color: var(--white); font-weight: 600; }
 
-.found-line { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 28px;
+.found-line { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px;
   font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--accent);
   opacity: 0; transform: translateY(4px); transition: opacity 0.35s ease, transform 0.35s ease; }
 .found-line.show { opacity: 1; transform: translateY(0); }
@@ -508,7 +508,7 @@ footer {
   display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .found-check svg { width: 11px; height: 11px; }
 
-.results { max-width: 920px; margin: 44px auto 0; padding: 0 6px; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+.results { max-width: 920px; margin: 26px auto 0; padding: 0 6px; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
   position: relative; z-index: 1; }
 .rcard { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 18px 16px;
   opacity: 0; transform: translateY(10px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); }
@@ -535,7 +535,7 @@ footer {
 }
 
 @media (max-width: 760px) {
-  .search-bar { min-height: 0; padding: 16px; flex-direction: column; align-items: stretch; gap: 10px; }
+  .search-bar { min-height: 140px; padding: 16px; flex-direction: column; align-items: stretch; gap: 10px; }
   .search-input, .search-mirror { font-size: 14px; line-height: 1.45; }
   .search-btn { padding: 0 18px; height: 46px; border-radius: 12px; font-size: 13px; width: 100%; }
 }
