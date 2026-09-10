@@ -406,6 +406,29 @@ footer {
 .match-net .n6 { animation: netpulse 3.6s ease-in-out infinite 3s; }
 @keyframes netpulse { 0%,100%{opacity:0.35;r:2.2;} 50%{opacity:1;r:3.4;} }
 
+/* Two-column hero on desktop: copy (badge/title/CTA) sits beside the
+   console instead of stacked above it, so the total vertical space needed
+   is whichever COLUMN is taller — not both added together. On mobile,
+   .hero-inner/.hero-copy/.hero-visual use display:contents, meaning they
+   don't exist as boxes at all — their children (badge, title, actions,
+   console) just participate directly in .hero's existing stacked layout,
+   completely unchanged from before. */
+.hero-inner, .hero-copy, .hero-visual { display: contents; }
+
+@media (min-width: 1024px) {
+  .hero-inner {
+    display: flex; align-items: center; gap: 48px;
+    max-width: 1280px; width: 100%; margin: 0 auto;
+  }
+  .hero-copy {
+    display: block; flex: 0 0 380px; text-align: left;
+  }
+  .hero-visual { display: block; flex: 1; min-width: 0; }
+  .hero-copy .hero-badge { margin: 0 0 16px; }
+  .hero-copy .hero-title { margin: 0 0 28px; text-align: left; max-width: none; font-size: clamp(32px, 3vw, 46px); }
+  .hero-copy .hero-actions { justify-content: flex-start; margin: 0; }
+}
+
 .hero-badge { position: relative; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(0,221,240,0.25); background: rgba(0,221,240,0.05); color: var(--cyan); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 14px; animation: fadeUp 0.6s ease both; }
 .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 6px var(--cyan); animation: pulse 2s infinite; }
 
@@ -839,9 +862,18 @@ footer {
     <circle class="node n5" cx="500" cy="400" r="3"/>
     <circle class="node n6" cx="720" cy="420" r="2.6"/>
   </svg>
+
+  <div class="hero-inner">
+  <div class="hero-copy">
   <div class="hero-badge"><div class="badge-dot"></div>The HR Marketplace</div>
   <h1 class="hero-title">Find the right <span class="gradient-text">HR expert</span> in minutes.</h1>
 
+  <div class="hero-actions">
+    <a href="/post-requirement.html" class="btn-primary">Post a Requirement →</a>
+  </div>
+  </div>
+
+  <div class="hero-visual">
   <div class="match-console">
     <div class="match-console-header"><span class="console-dot"></span>AI Match</div>
 
@@ -881,9 +913,7 @@ footer {
       <div class="results" id="resultsGrid"></div>
     </div>
   </div>
-
-  <div class="hero-actions">
-    <a href="/post-requirement.html" class="btn-primary">Post a Requirement →</a>
+  </div>
   </div>
 
 </section>
